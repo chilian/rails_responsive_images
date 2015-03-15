@@ -2,6 +2,7 @@
 
 A Rails image_tag() extension to generate HTML5 <picture> tag markup from the W3C HTML Responsive Images Extension Proposal. Dont't care about image resizing, the gem will do the work for you - on the fly ;-) 
 
+Example output:
 ```ruby
 <picture>
   <source media="(max-width: 767px)" srcset="/assets/responsive_images_767/picture.jpg">
