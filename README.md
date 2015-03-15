@@ -4,9 +4,9 @@ A Rails image_tag() extension to generate HTML5 <picture> tag markup from the W3
 
 ```ruby
 <picture>
-  <source media="(max-width: 766px)" srcset="/assets/responsive_images_767/picture.jpg">
-  <source media="(max-width: 990px)" srcset="/assets/responsive_images_991/picture.jpg">
-  <source media="(max-width: 200px)" srcset="/assets/responsive_images_1999/picture.jpg">
+  <source media="(max-width: 767px)" srcset="/assets/responsive_images_767/picture.jpg">
+  <source media="(max-width: 991px)" srcset="/assets/responsive_images_991/picture.jpg">
+  <source media="(max-width: 1999px)" srcset="/assets/responsive_images_1999/picture.jpg">
   <img width="2568" height="878" alt="awesome" src="/assets/picture.jpg">
 </picture>
 ```
