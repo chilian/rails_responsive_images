@@ -1,9 +1,13 @@
 # Rails responsive images
 
-A Rails image_tag() extension to generate HTML5 <picture> tag markup from the W3C HTML Responsive Images Extension Proposal. Dont't care about image resizing, the gem will do the work for you - on the fly ;-) 
+A Rails image_tag() extension to generate HTML5 <picture> tag markup from the W3C HTML Responsive Images Extension Proposal. Dont't care about image resizing, the gem will do the work for you - on the fly ;-) or just use the rake task "rake rails_responsive_images".
 
-Example output:
+The following image_tag
 ```ruby
+= image_tag 'awesome/picture.jpeg', alt: 'awesome', responsive: true
+```
+will generate this output:
+```html
 <picture>
   <source media="(max-width: 767px)" srcset="/assets/responsive_images_767/picture.jpg">
   <source media="(max-width: 991px)" srcset="/assets/responsive_images_991/picture.jpg">
