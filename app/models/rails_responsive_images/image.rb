@@ -13,8 +13,9 @@ module RailsResponsiveImages
 
     def generate_responsive_image!(original_image, size, output_path)
       img = ::Magick::Image.read(original_image).first
-      img = img.resize_to_fit(size, size)
+      img = img.resize_to_fit(size)
       img.write(output_path)
+      img.destroy!
     end
   end
 end
