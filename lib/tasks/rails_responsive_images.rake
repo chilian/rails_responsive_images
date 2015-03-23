@@ -13,8 +13,7 @@ namespace :rails_responsive_images do
     raise "The following tools must be installed and accessible from the execution path: #{ tools.join(', ') }\n\n" if tools.size > 0
   end
 
-  task :resize do
-    Rails.application.eager_load!
+  task resize: :environment do
 
     RakeFileUtils.verbose(false)
     start_time = Time.now
