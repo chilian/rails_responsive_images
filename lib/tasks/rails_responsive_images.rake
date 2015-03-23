@@ -1,4 +1,5 @@
 require "rails_responsive_images"
+require "rails_responsive_images/image"
 
 desc "Rails responsive images builds different sized versions from your images inside of the asset folder"
 task rails_responsive_images: [ 'rails_responsive_images:check_requirements', 'rails_responsive_images:resize' ]
