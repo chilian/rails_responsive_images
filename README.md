@@ -45,7 +45,7 @@ Require jquery-picture for cross browser support
 ```javascript
 //= require jquery-picture
 ```
-
+Add the responsive flag on image_tag helper
 ```ruby
 = image_tag 'awesome/picture.jpeg', alt: 'awesome', responsive: true
 ```
