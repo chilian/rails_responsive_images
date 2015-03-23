@@ -17,14 +17,14 @@ namespace :rails_responsive_images do
     RakeFileUtils.verbose(false)
     start_time = Time.now
 
-    file_list = FileList.new(Rails.root.join('app', 'assets', 'images/**/*.{gif,jpeg,jpg,png}').to_s) do |f|
+    file_list = ::FileList.new(Rails.root.join('app', 'assets', 'images/**/*.{gif,jpeg,jpg,png}').to_s) do |f|
       f.exclude(/(responsive_images_)\d+/)
     end
 
     puts "\nResize #{ file_list.size } image files."
 
     ::RailsResponsiveImages.configuration.image_sizes.each do |size|
-      file_list.split(' ').first.each do |original_filepath|
+      file_list.to_a.each do |original_filepath|
         filepath = original_filepath.gsub(Rails.root.join('app', 'assets', 'images').to_s, '')
         responsive_filepath = Rails.root.join('app', 'assets', 'images', "responsive_images_#{size}", filepath.sub(/\A\//, ''))
         ::RailsResponsiveImages::Image.instance.create_responsive_folder!(responsive_filepath)
