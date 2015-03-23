@@ -1,5 +1,4 @@
 require "rails_responsive_images"
-require "rails_responsive_images/image"
 
 desc "Rails responsive images builds different sized versions from your images inside of the asset folder"
 task rails_responsive_images: [ 'rails_responsive_images:check_requirements', 'rails_responsive_images:resize' ]
@@ -15,6 +14,8 @@ namespace :rails_responsive_images do
   end
 
   task :resize do
+    $rails_rake_task = true
+    
     RakeFileUtils.verbose(false)
     start_time = Time.now
 
