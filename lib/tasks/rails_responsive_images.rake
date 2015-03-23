@@ -14,8 +14,8 @@ namespace :rails_responsive_images do
   end
 
   task :resize do
-    $rails_rake_task = true
-    
+    Rails.application.eager_load!
+
     RakeFileUtils.verbose(false)
     start_time = Time.now
 
