@@ -46,7 +46,11 @@ Require jquery-picture for cross browser support
 //= require jquery-picture
 ```
 
-## Capistran-Integration
+```ruby
+= image_tag 'awesome/picture.jpeg', alt: 'awesome', responsive: true
+```
+
+## Capistrano - Integration
 ```ruby
 before 'deploy:assets:precompile', 'build_responsive_images'
 task :build_responsive_images, roles: :app do
@@ -54,13 +58,8 @@ task :build_responsive_images, roles: :app do
 end
 ```
 
-```ruby
-= image_tag 'awesome/picture.jpeg', alt: 'awesome', responsive: true
-```
-## TODO
-- write tests
-- write docs
-- review & cleanup the code
+## TODO's & issues
+https://github.com/chilian/rails_responsive_images/issues
 
 ## Contributing
 
