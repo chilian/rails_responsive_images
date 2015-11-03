@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['christoph@chilian.de']
   spec.summary       = %q{A Rails image_tag() extension to generate HTML5 <picture> tag markup from the W3C HTML Responsive Images Extension Proposal.}
   spec.description   = %q{A Rails image_tag() extension to generate HTML5 <picture> tag markup from the W3C HTML Responsive Images Extension Proposal.}
-  spec.homepage      = "https://chilian.de"
+  spec.homepage      = "http://chilian.de"
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
