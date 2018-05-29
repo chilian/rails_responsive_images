@@ -9,7 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Christoph Chilian', 'Josh Bradley']
   spec.email         = ['joshuabradley012@gmail.com']
   spec.summary       = %q{A Rails image_tag() extension to generate HTML5 <img> tags using srcset.}
-  spec.description   = %q{A Rails image_tag() extension to generate HTML5 <img> tags using srcset.}
+  spec.description   = %q{Generate responsive images sizes on assets:precompile and include a handy img_tag helper.}
+  spec.homepage      = 'https://joshbradley.me'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -19,7 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'bundler', '~> 1.7'
   spec.add_development_dependency 'rake', '~> 11.2'
-  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'rspec', '~> 3.5'
   spec.add_runtime_dependency 'mini_magick', '~> 4.8'
-  spec.add_runtime_dependency 'rails', '~> 5.2.0'
+  spec.add_runtime_dependency 'rails', '~> 5.2', '>= 5.2.0'
 end

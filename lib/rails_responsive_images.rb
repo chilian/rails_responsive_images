@@ -31,21 +31,13 @@ end
 ActionView::Helpers::AssetTagHelper.module_eval do
 
   def image_tag_with_responsiveness(path, options = {})
-    options = options.dup
-    responsive = options.delete(:responsive) { false }
-    if responsive
-      content_tag :picture do
-        original_filepath = path.sub(/\A\/assets/, '')
-        RailsResponsiveImages.configuration.image_sizes.each do |size|
-          responsive_image_path = image_path("responsive_images_#{size}/#{original_filepath}")
-          concat content_tag(:source, '', media: "(max-width: #{size}px)", srcset: responsive_image_path)
-        end
-        concat image_tag_without_responsiveness(path, options)
+    content_tag :picture do
+      original_file = path.sub(/\A\/assets/, '')
+      RailsResponsiveImages.configuration.image_sizes.each do |size|
+        responsive_image_path = image_path("responsive_images_#{size}/#{original_file}")
+        concat content_tag(:source, '', media: "(max-width: #{size}px)", srcset: responsive_image_path)
       end
-    else
-      image_tag_without_responsiveness(path, options)
+      concat content_tag(:img, '', src: image_path(original_file))
     end
   end
-
-  alias_method_chain :image_tag, :responsiveness
 end
