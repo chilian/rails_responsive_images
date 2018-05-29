@@ -1,5 +1,5 @@
 module RailsResponsiveImages
-  require 'RMagick'
+  require 'mini_magick'
   require 'fileutils'
   class Image
     include Singleton
@@ -12,7 +12,7 @@ module RailsResponsiveImages
     end
 
     def generate_responsive_image!(original_image, size, output_path)
-      img = ::Magick::Image.read(original_image).first
+      img = MiniMagick::Image.read(original_image).first
       img = img.resize_to_fit(size)
       img.write(output_path)
       img.destroy!

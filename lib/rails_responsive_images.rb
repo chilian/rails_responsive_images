@@ -36,7 +36,7 @@ ActionView::Helpers::AssetTagHelper.module_eval do
     if responsive
       content_tag :picture do
         original_filepath = path.sub(/\A\/assets/, '')
-        ::RailsResponsiveImages.configuration.image_sizes.each do |size|
+        RailsResponsiveImages.configuration.image_sizes.each do |size|
           responsive_image_path = image_path("responsive_images_#{size}/#{original_filepath}")
           concat content_tag(:source, '', media: "(max-width: #{size}px)", srcset: responsive_image_path)
         end
