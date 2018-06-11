@@ -4,6 +4,7 @@ desc "Rails responsive images builds different sized versions from your images i
 task rails_responsive_images: [ 'rails_responsive_images:check_requirements', 'rails_responsive_images:resize' ]
 
 namespace :rails_responsive_images do
+
   desc "Check for required programms"
   task :check_requirements do
     RakeFileUtils.verbose(false)

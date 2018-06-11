@@ -31,13 +31,20 @@ end
 ActionView::Helpers::AssetTagHelper.module_eval do
 
   def image_tag_with_responsiveness(path, options = {})
-    content_tag :picture do
-      original_file = path.sub(/\A\/assets/, '')
-      RailsResponsiveImages.configuration.image_sizes.each do |size|
-        responsive_image_path = image_path("responsive_images_#{size}/#{original_file}")
-        concat content_tag(:source, '', media: "(max-width: #{size}px)", srcset: responsive_image_path)
-      end
-      concat content_tag(:img, '', src: image_path(original_file))
+    options = options.symbolize_keys
+    check_for_image_tag_errors(options)
+    skip_pipeline = options.delete(:skip_pipeline)
+
+    options[:src] = resolve_image_source(source, skip_pipeline)
+
+    if options[:srcset] && !options[:srcset].is_a?(String)
+      options[:srcset] = options[:srcset].map do |src_path, size|
+        src_path = path_to_image(src_path, skip_pipeline: skip_pipeline)
+        "#{src_path} #{size}"
+      end.join(", ")
     end
+
+    options[:width], options[:height] = extract_dimensions(options.delete(:size)) if options[:size]
+    tag("img", options)
   end
 end

@@ -17,7 +17,7 @@ module RailsResponsiveImages
 
     # Set default settings
     def initialize
-      @image_sizes = [576, 768, 992, 2000]
+      @image_sizes = [360, 576, 768, 992, 2000]
     end
   end
 end
