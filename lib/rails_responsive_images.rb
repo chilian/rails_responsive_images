@@ -12,12 +12,6 @@ module RailsResponsiveImages
     @configuration = new_configuration
   end
 
-  # Yields the global configuration to a block.
-  #
-  # Example:
-  #   RailsResponsiveImages::Rails.configure do |config|
-  #     config.sizes = [767, 991, 1999]
-  #   end
   def self.configure
     yield configuration if block_given?
   end
@@ -30,19 +24,18 @@ end
 
 ActionView::Helpers::AssetTagHelper.module_eval do
 
-  def image_tag_with_responsiveness(path, options = {})
+  def image_tag_with_responsiveness(source, options = {})
     options = options.symbolize_keys
     check_for_image_tag_errors(options)
     skip_pipeline = options.delete(:skip_pipeline)
 
     options[:src] = resolve_image_source(source, skip_pipeline)
+    original_file = source.sub(/^\/assets/, '')
 
-    if options[:srcset] && !options[:srcset].is_a?(String)
-      options[:srcset] = options[:srcset].map do |src_path, size|
-        src_path = path_to_image(src_path, skip_pipeline: skip_pipeline)
-        "#{src_path} #{size}"
-      end.join(", ")
-    end
+    options[:srcset] = RailsResponsiveImages.configuration.image_sizes.map do |size|
+      src_path = path_to_image("responsive_images_#{size}/#{original_file}", skip_pipeline: skip_pipeline)
+      "#{src_path} #{size}w"
+    end.join(", ")
 
     options[:width], options[:height] = extract_dimensions(options.delete(:size)) if options[:size]
     tag("img", options)
