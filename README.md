@@ -1,6 +1,6 @@
 # Rails responsive images
 
-A Rails image_tag() extension to generate HTML5 <picture> tag markup from the W3C HTML Responsive Images Extension Proposal. Dont't care about image resizing, the gem will do the work for you - on the fly ;-) or just use the rake task "rake rails_responsive_images".
+A Rails `image_tag()` extension to generate HTML5 `<img>` tag using `srcset`. To resize images use the rake task "rake rails_responsive_images".
 
 The following image_tag
 ```ruby
@@ -8,12 +8,14 @@ The following image_tag
 ```
 will generate this output:
 ```html
-<picture>
-  <source media="(max-width: 767px)" srcset="/assets/responsive_images_767/picture.jpg">
-  <source media="(max-width: 991px)" srcset="/assets/responsive_images_991/picture.jpg">
-  <source media="(max-width: 1999px)" srcset="/assets/responsive_images_1999/picture.jpg">
-  <img width="2568" height="878" alt="awesome" src="/assets/picture.jpg">
-</picture>
+<img src="/assets/bcnc-logo-cc37ef86ca5332fd84fa3b7593120c266f1a34cc5c94bd443b07309e38fd97d0.png"
+     srcset="/assets/responsive_images_360/picture.png 360w,
+             /assets/responsive_images_576/picture.png 576w,
+             /assets/responsive_images_768/picture.png 768w,
+             /assets/responsive_images_992/picture.png 992w,
+             /assets/responsive_images_1200/picture.png 1200w,
+             /assets/responsive_images_1600/picture.png 1600w"
+>
 ```
 
 ## Installation
@@ -40,11 +42,11 @@ RailsResponsiveImages.configure do |c|
   c.image_sizes  = [767, 991, 1999]
 end
 ```
-
-Require jquery-picture for cross browser support
-```javascript
-//= require jquery-picture
+Default is:
+```ruby
+image_sizes  = [360, 576, 768, 992, 1200, 1600]
 ```
+
 Add the responsive flag on image_tag helper
 ```ruby
 = image_tag 'awesome/picture.jpeg', alt: 'awesome', responsive: true
