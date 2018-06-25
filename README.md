@@ -8,7 +8,7 @@ The following image_tag
 ```
 will generate this output:
 ```html
-<img src="/assets/bcnc-logo-cc37ef86ca5332fd84fa3b7593120c266f1a34cc5c94bd443b07309e38fd97d0.png"
+<img src="/assets/picture.png"
      srcset="/assets/responsive_images_360/picture.png 360w,
              /assets/responsive_images_576/picture.png 576w,
              /assets/responsive_images_768/picture.png 768w,
