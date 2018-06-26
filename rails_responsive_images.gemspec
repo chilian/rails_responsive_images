@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['christoph@chilian.de', 'joshuabradley012@gmail.com']
   spec.summary       = %q{A Rails image_tag() extension to generate HTML5 <img> tags using srcset.}
   spec.description   = %q{Generate responsive images sizes on assets:precompile and include a handy img_tag helper.}
-  spec.homepage      = 'http://chilian.de'
+  spec.homepage      = 'https://github.com/chilian/rails_responsive_images'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
