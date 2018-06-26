@@ -4,6 +4,7 @@ desc "Rails responsive images builds different sized versions from your images i
 task rails_responsive_images: [ 'rails_responsive_images:check_requirements', 'rails_responsive_images:resize' ]
 
 namespace :rails_responsive_images do
+
   desc "Check for required programms"
   task :check_requirements do
     RakeFileUtils.verbose(false)
@@ -24,12 +25,12 @@ namespace :rails_responsive_images do
 
     puts "\nResize #{ file_list.size } image files."
 
-    ::RailsResponsiveImages.configuration.image_sizes.each do |size|
+    RailsResponsiveImages.configuration.image_sizes.each do |size|
       file_list.to_a.each do |original_filepath|
         filepath = original_filepath.gsub(Rails.root.join('app', 'assets', 'images').to_s, '')
         responsive_filepath = Rails.root.join('app', 'assets', 'images', "responsive_images_#{size}", filepath.sub(/\A\//, ''))
-        ::RailsResponsiveImages::Image.instance.create_responsive_folder!(responsive_filepath)
-        ::RailsResponsiveImages::Image.instance.generate_responsive_image!(original_filepath, size, responsive_filepath)
+        RailsResponsiveImages::Image.instance.create_responsive_folder!(responsive_filepath)
+        RailsResponsiveImages::Image.instance.generate_responsive_image!(original_filepath, size, responsive_filepath)
       end
     end
 
