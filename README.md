@@ -1,3 +1,4 @@
+[![Gem Version](https://badge.fury.io/rb/rails_responsive_images.svg)](https://badge.fury.io/rb/rails_responsive_images)
 # Rails responsive images
 
 A Rails `image_tag()` extension to generate HTML5 `<img>` tag using `srcset`. To resize images use the rake task "rake rails_responsive_images".
